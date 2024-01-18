@@ -7,6 +7,59 @@ const branch =
   process.env.HEAD ||
   "main";
 
+const PostCollection = {
+  name: "post",
+  label: "Posts",
+  path: "content/posts",
+  fields: [
+    {
+      type: "string",
+      name: "title",
+      label: "Title",
+      isTitle: true,
+      required: true,
+    },
+    {
+      type: "datetime",
+      name: "posted",
+      label: "Date Posted",
+      required: true,
+    },
+    {
+      type: "rich-text",
+      name: "body",
+      label: "Body",
+      isBody: true,
+    },
+  ],
+}
+
+const DocsCollection = {
+  name: "docs",
+  label: "Docs",
+  path: "src/content/docs",
+  fields: [
+    {
+      type: "string",
+      name: "title",
+      label: "Title",
+      isTitle: true,
+      required: true,
+    },
+    {
+      type: "string",
+      name: "description",
+      label: "Description",
+    },
+    {
+      type: "rich-text",
+      name: "body",
+      label: "Body",
+      isBody: true,
+    },
+  ],
+};
+
 export default defineConfig({
   branch,
 
@@ -28,32 +81,8 @@ export default defineConfig({
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/schema/
   schema: {
     collections: [
-      {
-        name: "post",
-        label: "Posts",
-        path: "content/posts",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "datetime",
-            name: "posted",
-            label: "Date Posted",
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
-        ],
-      },
+      DocsCollection,
+      PostCollection,
     ],
   },
 });
