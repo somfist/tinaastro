@@ -1,5 +1,5 @@
 ---
-title: Example Guide
+title: 한글
 description: A guide in my new Starlight docs site.
 ---
 
